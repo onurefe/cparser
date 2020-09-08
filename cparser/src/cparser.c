@@ -33,7 +33,7 @@ static uint8_t getLength(const char *input);
 /* Private variables -------------------------------------------------------*/
 static Cp_Command_t *CommandTable[CPARSER_CONFIG_MAX_NUM_OF_COMMANDS];
 static uint16_t NumOfCommands = 0;
-static Dictionary_Dictionary_t ParameterDictionary;
+static Dictionary_t ParameterDictionary;
 
 /* Exported functions ------------------------------------------------------*/
 /**
@@ -112,7 +112,8 @@ uint8_t Cp_FeedLine(char *input, uint16_t length)
                                command->params[i].type, &bulk_data[bulk_data_size], &param_size))
                 {
                     // Add parameter to dictionary.
-                    Dictionary_Add(&ParameterDictionary, command->params[i].letter, &bulk_data[bulk_data_size]);
+                    Dictionary_Add(&ParameterDictionary, command->params[i].letter,
+                                   command->params[i].type, &bulk_data[bulk_data_size]);
                     bulk_data_size += param_size;
 
                     break;

@@ -20,7 +20,7 @@ extern "C"
      * 
      * @param dictionary: Pointer to the dictionary of parameters.
      */
-    typedef void (*Cp_ParsedCallback_t)(Dictionary_Dictionary_t *dictionary);
+    typedef void (*Cp_ParsedCallback_t)(Dictionary_t *dictionary);
 
     /*! Parameter type enumeration. Determines type of the parameter to be 
     parsed. */

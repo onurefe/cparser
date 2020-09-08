@@ -3,10 +3,10 @@
 #include "../cparser/inc/cparser.h"
 
 /* Private function prototypes ---------------------------------------------*/
-static void versionCmdCallback(Dictionary_Dictionary_t *params);
-static void pumpCmdCallback(Dictionary_Dictionary_t *params);
-static void moveCmdCallback(Dictionary_Dictionary_t *params);
-static void delayCmdCallback(Dictionary_Dictionary_t *params);
+static void versionCmdCallback(Dictionary_t *params);
+static void pumpCmdCallback(Dictionary_t *params);
+static void moveCmdCallback(Dictionary_t *params);
+static void delayCmdCallback(Dictionary_t *params);
 
 /* Private variables -------------------------------------------------------*/
 Cp_Command_t CommandTable[] =
@@ -39,17 +39,23 @@ Cp_Command_t CommandTable[] =
 
 static Bool_t versionCmdTriggered;
 static int32_t versionCmdVersion;
+static Cp_ParamType_t versionCmdVersionType;
 
 static Bool_t delayCmdTriggered;
 static float delayCmdTime;
+static Cp_ParamType_t delayCmdTimeType;
 
 static Bool_t moveCmdTriggered;
 static float moveCmdDisplacement;
 static float moveCmdSpeed;
+static Cp_ParamType_t moveCmdDisplacementType;
+static Cp_ParamType_t moveCmdSpeedType;
 
 static Bool_t pumpCmdTriggered;
 static float pumpCmdVolume;
 static char pumpCmdMode;
+static Cp_ParamType_t pumpCmdVolumeType;
+static Cp_ParamType_t pumpCmdModeType;
 
 struct CparserTest : public ::testing::Test
 {
@@ -91,6 +97,7 @@ TEST_F(CparserTest, DelayTest)
 
     EXPECT_EQ(delayCmdTriggered, TRUE);
     EXPECT_FLOAT_EQ(delayCmdTime, 100.0f);
+    EXPECT_EQ(delayCmdTimeType, CP_PARAM_TYPE_REAL);
 }
 
 TEST_F(CparserTest, VersionTest)
@@ -101,6 +108,7 @@ TEST_F(CparserTest, VersionTest)
 
     EXPECT_EQ(versionCmdTriggered, TRUE);
     EXPECT_EQ(versionCmdVersion, 10);
+    EXPECT_EQ(versionCmdVersionType, CP_PARAM_TYPE_INTEGER);
 }
 
 TEST_F(CparserTest, MoveTest)
@@ -112,6 +120,8 @@ TEST_F(CparserTest, MoveTest)
     EXPECT_EQ(moveCmdTriggered, TRUE);
     EXPECT_FLOAT_EQ(moveCmdDisplacement, 1.0f);
     EXPECT_FLOAT_EQ(moveCmdSpeed, 5.0f);
+    EXPECT_EQ(moveCmdDisplacementType, CP_PARAM_TYPE_REAL);
+    EXPECT_EQ(moveCmdSpeedType, CP_PARAM_TYPE_REAL);
 }
 
 TEST_F(CparserTest, PumpTest)
@@ -123,30 +133,38 @@ TEST_F(CparserTest, PumpTest)
     EXPECT_EQ(pumpCmdTriggered, TRUE);
     EXPECT_FLOAT_EQ(pumpCmdVolume, 1.25);
     EXPECT_EQ('D', pumpCmdMode);
+    EXPECT_EQ(pumpCmdVolumeType, CP_PARAM_TYPE_REAL);
+    EXPECT_EQ(pumpCmdModeType, CP_PARAM_TYPE_LETTER);
 }
 
-void versionCmdCallback(Dictionary_Dictionary_t *params)
+void versionCmdCallback(Dictionary_t *params)
 {
     versionCmdTriggered = TRUE;
-    versionCmdVersion = *((int32_t *)Dictionary_Get(params, 'V'));
+    versionCmdVersion = *((int32_t *)Dictionary_Get(params, 'V',
+                                                    &versionCmdVersionType));
 }
 
-void pumpCmdCallback(Dictionary_Dictionary_t *params)
+void pumpCmdCallback(Dictionary_t *params)
 {
     pumpCmdTriggered = TRUE;
-    pumpCmdVolume = *((float *)Dictionary_Get(params, 'V'));
-    pumpCmdMode = *((char *)Dictionary_Get(params, 'M'));
+    pumpCmdVolume = *((float *)Dictionary_Get(params, 'V',
+                                              &pumpCmdVolumeType));
+    pumpCmdMode = *((char *)Dictionary_Get(params, 'M',
+                                           &pumpCmdModeType));
 }
 
-void moveCmdCallback(Dictionary_Dictionary_t *params)
+void moveCmdCallback(Dictionary_t *params)
 {
     moveCmdTriggered = TRUE;
-    moveCmdDisplacement = *((float *)Dictionary_Get(params, 'D'));
-    moveCmdSpeed = *((float *)Dictionary_Get(params, 'S'));
+    moveCmdDisplacement = *((float *)Dictionary_Get(params, 'D',
+                                                    &moveCmdDisplacementType));
+    moveCmdSpeed = *((float *)Dictionary_Get(params, 'S',
+                                             &moveCmdSpeedType));
 }
 
-void delayCmdCallback(Dictionary_Dictionary_t *params)
+void delayCmdCallback(Dictionary_t *params)
 {
     delayCmdTriggered = TRUE;
-    delayCmdTime = *((float *)Dictionary_Get(params, 'T'));
+    delayCmdTime = *((float *)Dictionary_Get(params, 'T',
+                                             &delayCmdTimeType));
 }
