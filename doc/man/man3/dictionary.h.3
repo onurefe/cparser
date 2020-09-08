@@ -1,0 +1,48 @@
+.TH "cparser/inc/dictionary.h" 3 "Wed Sep 9 2020" "Version 1" "Cparser" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cparser/inc/dictionary.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'generic\&.h'\fP
+.br
+\fC#include 'cparser_config\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBDictionary_t\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Dictionary structure and related operations\&. These are used accross the parameter parsing process and passing them to the application\&. 
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct Dictionary_t"
+.PP 
+Dictionary structure\&. 
+.PP
+\fBData Fields:\fP
+.RS 4
+char \fIkeys[\fBCPARSER_CONFIG_MAX_NUM_OF_PARAMS\fP]\fP Letters paired with the values(keys) 
+.br
+.PP
+uint8_t \fInumberOfElements\fP Number of elements 
+.br
+.PP
+uint8_t \fItypes[\fBCPARSER_CONFIG_MAX_NUM_OF_PARAMS\fP]\fP Types of the values 
+.br
+.PP
+void * \fIvalues[\fBCPARSER_CONFIG_MAX_NUM_OF_PARAMS\fP]\fP Pointers to the values 
+.br
+.PP
+.RE
+.PP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Cparser from the source code\&.

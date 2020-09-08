@@ -1,0 +1,127 @@
+\hypertarget{dictionary_8h}{}\doxysection{inc/dictionary.h File Reference}
+\label{dictionary_8h}\index{inc/dictionary.h@{inc/dictionary.h}}
+{\ttfamily \#include \char`\"{}generic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cparser\+\_\+config.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{dictionary_8h_a291747fa79018e127389967120796383}{Dictionary\+\_\+\+Add}} (\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$dictionary, char key, uint8\+\_\+t type, void $\ast$value)
+\begin{DoxyCompactList}\small\item\em Adds element to the dictionary. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{dictionary_8h_a1be960b21a37c7f888ebdc6bc22830dd}{Dictionary\+\_\+\+Remove}} (\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$dictionary, char key)
+\begin{DoxyCompactList}\small\item\em Removes element from the dictionary. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{dictionary_8h_aa6818b10b41b343e76e5bd67081d8f1e}{Dictionary\+\_\+\+Clear}} (\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$dictionary)
+\begin{DoxyCompactList}\small\item\em Clears all the elements of the dictionary. \end{DoxyCompactList}\item 
+static Bool\+\_\+t \mbox{\hyperlink{dictionary_8h_a783e90f2ef94adf0e036cd98781cfe27}{Dictionary\+\_\+\+Does\+Exist}} (\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$dictionary, char key)
+\begin{DoxyCompactList}\small\item\em Check if the element exists in the given dictionary. \end{DoxyCompactList}\item 
+static void $\ast$ \mbox{\hyperlink{dictionary_8h_a9865d7677aa04f74c94c82c50d15138e}{Dictionary\+\_\+\+Get}} (\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$dictionary, char key, uint8\+\_\+t $\ast$type)
+\begin{DoxyCompactList}\small\item\em Parses pointer of the element value from the dictionary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dictionary structure and related operations. These are used accross the parameter parsing process and passing them to the application. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{dictionary_8h_a291747fa79018e127389967120796383}\label{dictionary_8h_a291747fa79018e127389967120796383}} 
+\index{dictionary.h@{dictionary.h}!Dictionary\_Add@{Dictionary\_Add}}
+\index{Dictionary\_Add@{Dictionary\_Add}!dictionary.h@{dictionary.h}}
+\doxysubsubsection{\texorpdfstring{Dictionary\_Add()}{Dictionary\_Add()}}
+{\footnotesize\ttfamily static void Dictionary\+\_\+\+Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$}]{dictionary,  }\item[{char}]{key,  }\item[{uint8\+\_\+t}]{type,  }\item[{void $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Adds element to the dictionary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dictionary} & Pointer to the dictionary object. \\
+\hline
+{\em key} & Key of the element. \\
+\hline
+{\em type} & Type of the parameter. \\
+\hline
+{\em value} & Pointer of the value of element. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{dictionary_8h_aa6818b10b41b343e76e5bd67081d8f1e}\label{dictionary_8h_aa6818b10b41b343e76e5bd67081d8f1e}} 
+\index{dictionary.h@{dictionary.h}!Dictionary\_Clear@{Dictionary\_Clear}}
+\index{Dictionary\_Clear@{Dictionary\_Clear}!dictionary.h@{dictionary.h}}
+\doxysubsubsection{\texorpdfstring{Dictionary\_Clear()}{Dictionary\_Clear()}}
+{\footnotesize\ttfamily static void Dictionary\+\_\+\+Clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$}]{dictionary }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Clears all the elements of the dictionary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dictionary} & Pointer to the dictionary object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{dictionary_8h_a783e90f2ef94adf0e036cd98781cfe27}\label{dictionary_8h_a783e90f2ef94adf0e036cd98781cfe27}} 
+\index{dictionary.h@{dictionary.h}!Dictionary\_DoesExist@{Dictionary\_DoesExist}}
+\index{Dictionary\_DoesExist@{Dictionary\_DoesExist}!dictionary.h@{dictionary.h}}
+\doxysubsubsection{\texorpdfstring{Dictionary\_DoesExist()}{Dictionary\_DoesExist()}}
+{\footnotesize\ttfamily static Bool\+\_\+t Dictionary\+\_\+\+Does\+Exist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$}]{dictionary,  }\item[{char}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Check if the element exists in the given dictionary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dictionary} & Pointer to the dictionary object. \\
+\hline
+{\em key} & Key of the element.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{dictionary_8h_a9865d7677aa04f74c94c82c50d15138e}\label{dictionary_8h_a9865d7677aa04f74c94c82c50d15138e}} 
+\index{dictionary.h@{dictionary.h}!Dictionary\_Get@{Dictionary\_Get}}
+\index{Dictionary\_Get@{Dictionary\_Get}!dictionary.h@{dictionary.h}}
+\doxysubsubsection{\texorpdfstring{Dictionary\_Get()}{Dictionary\_Get()}}
+{\footnotesize\ttfamily static void$\ast$ Dictionary\+\_\+\+Get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$}]{dictionary,  }\item[{char}]{key,  }\item[{uint8\+\_\+t $\ast$}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Parses pointer of the element value from the dictionary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dictionary} & Pointer to the dictionary object. \\
+\hline
+{\em key} & Key of the element. \\
+\hline
+{\em type} & Pointer to return the type of the element.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & or pointer to the element value. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{dictionary_8h_a1be960b21a37c7f888ebdc6bc22830dd}\label{dictionary_8h_a1be960b21a37c7f888ebdc6bc22830dd}} 
+\index{dictionary.h@{dictionary.h}!Dictionary\_Remove@{Dictionary\_Remove}}
+\index{Dictionary\_Remove@{Dictionary\_Remove}!dictionary.h@{dictionary.h}}
+\doxysubsubsection{\texorpdfstring{Dictionary\_Remove()}{Dictionary\_Remove()}}
+{\footnotesize\ttfamily static void Dictionary\+\_\+\+Remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$}]{dictionary,  }\item[{char}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Removes element from the dictionary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dictionary} & Pointer to the dictionary object. \\
+\hline
+{\em key} & Key of the element. \\
+\hline
+\end{DoxyParams}

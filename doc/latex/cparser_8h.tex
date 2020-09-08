@@ -1,0 +1,121 @@
+\hypertarget{cparser_8h}{}\doxysection{inc/cparser.h File Reference}
+\label{cparser_8h}\index{inc/cparser.h@{inc/cparser.h}}
+{\ttfamily \#include \char`\"{}generic.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cparser\+\_\+config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dictionary.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structCp__Param__t}{Cp\+\_\+\+Param\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structCp__Trigger__t}{Cp\+\_\+\+Trigger\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{cparser_8h_a59b1eb2ed5b907ff7a81d2e5d25317e3}{Cp\+\_\+\+Parsed\+Callback\+\_\+t}}) (\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$dictionary)
+\begin{DoxyCompactList}\small\item\em Callback function prototype for the parsed trigger callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{cparser_8h_a341f092d75b4a2aeddeb416150b29696}{\+\_\+\+Cp\+\_\+\+Param\+Type\+\_\+t}} \{ \mbox{\hyperlink{cparser_8h_a341f092d75b4a2aeddeb416150b29696a24f639e7d9d5d756d63cad28c7577083}{C\+P\+\_\+\+P\+A\+R\+A\+M\+\_\+\+T\+Y\+P\+E\+\_\+\+L\+E\+T\+T\+ER}} = 0, 
+\mbox{\hyperlink{cparser_8h_a341f092d75b4a2aeddeb416150b29696ab301e7209877bab8eb7adc47958b3241}{C\+P\+\_\+\+P\+A\+R\+A\+M\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+T\+E\+G\+ER}} = 1, 
+\mbox{\hyperlink{cparser_8h_a341f092d75b4a2aeddeb416150b29696a4fc543302d0b549495c333d8db6a179a}{C\+P\+\_\+\+P\+A\+R\+A\+M\+\_\+\+T\+Y\+P\+E\+\_\+\+R\+E\+AL}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cparser_8h_a5c386b3b6f87b2d6248e9c3c93cf4d2c}\label{cparser_8h_a5c386b3b6f87b2d6248e9c3c93cf4d2c}} 
+void \mbox{\hyperlink{cparser_8h_a5c386b3b6f87b2d6248e9c3c93cf4d2c}{Cp\+\_\+\+Reset}} (void)
+\begin{DoxyCompactList}\small\item\em Clears the trigger parser registry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cparser_8h_af08a592ebcc3e4d85f46e4972bb9acd8}{Cp\+\_\+\+Register}} (\mbox{\hyperlink{structCp__Trigger__t}{Cp\+\_\+\+Trigger\+\_\+t}} $\ast$triggers, uint16\+\_\+t num\+Of\+Triggers)
+\begin{DoxyCompactList}\small\item\em Registers a trigger. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{cparser_8h_a41b2bf5b6c901271615729c333fd8634}{Cp\+\_\+\+Feed\+Line}} (char $\ast$input, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Feeds line of char array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface of the cparser library. 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{cparser_8h_a59b1eb2ed5b907ff7a81d2e5d25317e3}\label{cparser_8h_a59b1eb2ed5b907ff7a81d2e5d25317e3}} 
+\index{cparser.h@{cparser.h}!Cp\_ParsedCallback\_t@{Cp\_ParsedCallback\_t}}
+\index{Cp\_ParsedCallback\_t@{Cp\_ParsedCallback\_t}!cparser.h@{cparser.h}}
+\doxysubsubsection{\texorpdfstring{Cp\_ParsedCallback\_t}{Cp\_ParsedCallback\_t}}
+{\footnotesize\ttfamily typedef void($\ast$ Cp\+\_\+\+Parsed\+Callback\+\_\+t) (\mbox{\hyperlink{structDictionary__t}{Dictionary\+\_\+t}} $\ast$dictionary)}
+
+
+
+Callback function prototype for the parsed trigger callbacks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dictionary} & Pointer to the dictionary of parameters. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{cparser_8h_a341f092d75b4a2aeddeb416150b29696}\label{cparser_8h_a341f092d75b4a2aeddeb416150b29696}} 
+\index{cparser.h@{cparser.h}!\_Cp\_ParamType\_t@{\_Cp\_ParamType\_t}}
+\index{\_Cp\_ParamType\_t@{\_Cp\_ParamType\_t}!cparser.h@{cparser.h}}
+\doxysubsubsection{\texorpdfstring{\_Cp\_ParamType\_t}{\_Cp\_ParamType\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{cparser_8h_a341f092d75b4a2aeddeb416150b29696}{\+\_\+\+Cp\+\_\+\+Param\+Type\+\_\+t}}}
+
+Parameter type enumeration. Determines type of the parameter to be parsed. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CP\_PARAM\_TYPE\_LETTER@{CP\_PARAM\_TYPE\_LETTER}!cparser.h@{cparser.h}}\index{cparser.h@{cparser.h}!CP\_PARAM\_TYPE\_LETTER@{CP\_PARAM\_TYPE\_LETTER}}}\mbox{\Hypertarget{cparser_8h_a341f092d75b4a2aeddeb416150b29696a24f639e7d9d5d756d63cad28c7577083}\label{cparser_8h_a341f092d75b4a2aeddeb416150b29696a24f639e7d9d5d756d63cad28c7577083}} 
+C\+P\+\_\+\+P\+A\+R\+A\+M\+\_\+\+T\+Y\+P\+E\+\_\+\+L\+E\+T\+T\+ER&Letter \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CP\_PARAM\_TYPE\_INTEGER@{CP\_PARAM\_TYPE\_INTEGER}!cparser.h@{cparser.h}}\index{cparser.h@{cparser.h}!CP\_PARAM\_TYPE\_INTEGER@{CP\_PARAM\_TYPE\_INTEGER}}}\mbox{\Hypertarget{cparser_8h_a341f092d75b4a2aeddeb416150b29696ab301e7209877bab8eb7adc47958b3241}\label{cparser_8h_a341f092d75b4a2aeddeb416150b29696ab301e7209877bab8eb7adc47958b3241}} 
+C\+P\+\_\+\+P\+A\+R\+A\+M\+\_\+\+T\+Y\+P\+E\+\_\+\+I\+N\+T\+E\+G\+ER&Signed integer \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CP\_PARAM\_TYPE\_REAL@{CP\_PARAM\_TYPE\_REAL}!cparser.h@{cparser.h}}\index{cparser.h@{cparser.h}!CP\_PARAM\_TYPE\_REAL@{CP\_PARAM\_TYPE\_REAL}}}\mbox{\Hypertarget{cparser_8h_a341f092d75b4a2aeddeb416150b29696a4fc543302d0b549495c333d8db6a179a}\label{cparser_8h_a341f092d75b4a2aeddeb416150b29696a4fc543302d0b549495c333d8db6a179a}} 
+C\+P\+\_\+\+P\+A\+R\+A\+M\+\_\+\+T\+Y\+P\+E\+\_\+\+R\+E\+AL&Real number \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cparser_8h_a41b2bf5b6c901271615729c333fd8634}\label{cparser_8h_a41b2bf5b6c901271615729c333fd8634}} 
+\index{cparser.h@{cparser.h}!Cp\_FeedLine@{Cp\_FeedLine}}
+\index{Cp\_FeedLine@{Cp\_FeedLine}!cparser.h@{cparser.h}}
+\doxysubsubsection{\texorpdfstring{Cp\_FeedLine()}{Cp\_FeedLine()}}
+{\footnotesize\ttfamily uint8\+\_\+t Cp\+\_\+\+Feed\+Line (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint16\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Feeds line of char array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Line char array. \\
+\hline
+{\em length} & Length of the char array.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{cparser_8h_af08a592ebcc3e4d85f46e4972bb9acd8}\label{cparser_8h_af08a592ebcc3e4d85f46e4972bb9acd8}} 
+\index{cparser.h@{cparser.h}!Cp\_Register@{Cp\_Register}}
+\index{Cp\_Register@{Cp\_Register}!cparser.h@{cparser.h}}
+\doxysubsubsection{\texorpdfstring{Cp\_Register()}{Cp\_Register()}}
+{\footnotesize\ttfamily void Cp\+\_\+\+Register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCp__Trigger__t}{Cp\+\_\+\+Trigger\+\_\+t}} $\ast$}]{triggers,  }\item[{uint16\+\_\+t}]{num\+Of\+Triggers }\end{DoxyParamCaption})}
+
+
+
+Registers a trigger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em triggers} & Pointer to the trigger array. \\
+\hline
+{\em num\+Of\+Triggers} & Number of triggers to be registered. \\
+\hline
+\end{DoxyParams}

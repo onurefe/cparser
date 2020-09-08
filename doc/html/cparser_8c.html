@@ -77,11 +77,11 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acef09c2e8d7b1538707ba812857a8f7b"><td class="memItemLeft" align="right" valign="top">static Bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#acef09c2e8d7b1538707ba812857a8f7b">doesMatch</a> (const char *cname, char *input, uint8_t length)</td></tr>
-<tr class="memdesc:acef09c2e8d7b1538707ba812857a8f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare if the input matches to the command name.  <a href="cparser_8c.html#acef09c2e8d7b1538707ba812857a8f7b">More...</a><br /></td></tr>
-<tr class="separator:acef09c2e8d7b1538707ba812857a8f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa9ba400b942f4e49ab8ec44d896957"><td class="memItemLeft" align="right" valign="top">static Bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#a1aa9ba400b942f4e49ab8ec44d896957">doesMatch</a> (const char *tname, char *input, uint8_t length)</td></tr>
+<tr class="memdesc:a1aa9ba400b942f4e49ab8ec44d896957"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare if the input matches to the trigger name.  <a href="cparser_8c.html#a1aa9ba400b942f4e49ab8ec44d896957">More...</a><br /></td></tr>
+<tr class="separator:a1aa9ba400b942f4e49ab8ec44d896957"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5028778d4f73b313c3dd8940798ef9d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#af5028778d4f73b313c3dd8940798ef9d">parseFields</a> (char *input, uint8_t inputLength, Field_t *fields, uint8_t *numOfFields)</td></tr>
-<tr class="memdesc:af5028778d4f73b313c3dd8940798ef9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse fields of the command string.  <a href="cparser_8c.html#af5028778d4f73b313c3dd8940798ef9d">More...</a><br /></td></tr>
+<tr class="memdesc:af5028778d4f73b313c3dd8940798ef9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse fields of the trigger string.  <a href="cparser_8c.html#af5028778d4f73b313c3dd8940798ef9d">More...</a><br /></td></tr>
 <tr class="separator:af5028778d4f73b313c3dd8940798ef9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab002a4cb26ce6ea66fa2571fad0d33e5"><td class="memItemLeft" align="right" valign="top">static Bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#ab002a4cb26ce6ea66fa2571fad0d33e5">parseValue</a> (char *input, uint8_t inputLength, Cp_ParamType_t type, void *data, uint8_t *size)</td></tr>
 <tr class="memdesc:ab002a4cb26ce6ea66fa2571fad0d33e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the value of a given type.  <a href="cparser_8c.html#ab002a4cb26ce6ea66fa2571fad0d33e5">More...</a><br /></td></tr>
@@ -109,21 +109,20 @@ Functions</h2></td></tr>
 <tr class="separator:a72556af76a3b08dcdd2b9c3f2b67e359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c386b3b6f87b2d6248e9c3c93cf4d2c"><td class="memItemLeft" align="right" valign="top"><a id="a5c386b3b6f87b2d6248e9c3c93cf4d2c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#a5c386b3b6f87b2d6248e9c3c93cf4d2c">Cp_Reset</a> (void)</td></tr>
-<tr class="memdesc:a5c386b3b6f87b2d6248e9c3c93cf4d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the command parser registry. <br /></td></tr>
+<tr class="memdesc:a5c386b3b6f87b2d6248e9c3c93cf4d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the trigger parser registry. <br /></td></tr>
 <tr class="separator:a5c386b3b6f87b2d6248e9c3c93cf4d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace17ae2be0ab40cce4894acc757a5d59"><td class="memItemLeft" align="right" valign="top"><a id="ace17ae2be0ab40cce4894acc757a5d59"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#ace17ae2be0ab40cce4894acc757a5d59">Cp_Register</a> (<a class="el" href="structCp__Command__t.html">Cp_Command_t</a> *command)</td></tr>
-<tr class="memdesc:ace17ae2be0ab40cce4894acc757a5d59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a command. <br /></td></tr>
-<tr class="separator:ace17ae2be0ab40cce4894acc757a5d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb0bc4e2a58ee2843ec1ea5778be639e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#aeb0bc4e2a58ee2843ec1ea5778be639e">Cp_FeedLine</a> (char *input)</td></tr>
-<tr class="memdesc:aeb0bc4e2a58ee2843ec1ea5778be639e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feeds line of string.  <a href="cparser_8c.html#aeb0bc4e2a58ee2843ec1ea5778be639e">More...</a><br /></td></tr>
-<tr class="separator:aeb0bc4e2a58ee2843ec1ea5778be639e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af08a592ebcc3e4d85f46e4972bb9acd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#af08a592ebcc3e4d85f46e4972bb9acd8">Cp_Register</a> (<a class="el" href="structCp__Trigger__t.html">Cp_Trigger_t</a> *triggers, uint16_t numOfTriggers)</td></tr>
+<tr class="memdesc:af08a592ebcc3e4d85f46e4972bb9acd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a trigger.  <a href="cparser_8c.html#af08a592ebcc3e4d85f46e4972bb9acd8">More...</a><br /></td></tr>
+<tr class="separator:af08a592ebcc3e4d85f46e4972bb9acd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b2bf5b6c901271615729c333fd8634"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser_8c.html#a41b2bf5b6c901271615729c333fd8634">Cp_FeedLine</a> (char *input, uint16_t length)</td></tr>
+<tr class="memdesc:a41b2bf5b6c901271615729c333fd8634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feeds line of char array.  <a href="cparser_8c.html#a41b2bf5b6c901271615729c333fd8634">More...</a><br /></td></tr>
+<tr class="separator:a41b2bf5b6c901271615729c333fd8634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cparser library core module. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aeb0bc4e2a58ee2843ec1ea5778be639e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb0bc4e2a58ee2843ec1ea5778be639e">&#9670;&nbsp;</a></span>Cp_FeedLine()</h2>
+<a id="a41b2bf5b6c901271615729c333fd8634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41b2bf5b6c901271615729c333fd8634">&#9670;&nbsp;</a></span>Cp_FeedLine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,22 +131,70 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpar
           <td class="memname">uint8_t Cp_FeedLine </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Feeds line of string. </p>
+<p>Feeds line of char array. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input</td><td>Line string.</td></tr>
+    <tr><td class="paramname">input</td><td>Line char array. </td></tr>
+    <tr><td class="paramname">length</td><td>Length of the char array.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">TRUE</td><td>or FALSE. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af08a592ebcc3e4d85f46e4972bb9acd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af08a592ebcc3e4d85f46e4972bb9acd8">&#9670;&nbsp;</a></span>Cp_Register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Cp_Register </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCp__Trigger__t.html">Cp_Trigger_t</a> *&#160;</td>
+          <td class="paramname"><em>triggers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>numOfTriggers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a trigger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">triggers</td><td>Pointer to the trigger array. </td></tr>
+    <tr><td class="paramname">numOfTriggers</td><td>Number of triggers to be registered. </td></tr>
   </table>
   </dd>
 </dl>
@@ -213,8 +260,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpar
 
 </div>
 </div>
-<a id="acef09c2e8d7b1538707ba812857a8f7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acef09c2e8d7b1538707ba812857a8f7b">&#9670;&nbsp;</a></span>doesMatch()</h2>
+<a id="a1aa9ba400b942f4e49ab8ec44d896957"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aa9ba400b942f4e49ab8ec44d896957">&#9670;&nbsp;</a></span>doesMatch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,7 +273,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpar
           <td class="memname">Bool_t doesMatch </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>cname</em>, </td>
+          <td class="paramname"><em>tname</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -253,10 +300,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpar
 </table>
 </div><div class="memdoc">
 
-<p>Compare if the input matches to the command name. </p>
+<p>Compare if the input matches to the trigger name. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cname</td><td>Null terminated command name string. </td></tr>
+    <tr><td class="paramname">tname</td><td>Null terminated trigger name string. </td></tr>
     <tr><td class="paramname">input</td><td>Input char array. </td></tr>
     <tr><td class="paramname">length</td><td>Length of the input.</td></tr>
   </table>
@@ -423,10 +470,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpar
 </table>
 </div><div class="memdoc">
 
-<p>Parse fields of the command string. </p>
+<p>Parse fields of the trigger string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">input</td><td>Command line string. </td></tr>
+    <tr><td class="paramname">input</td><td>Trigger line string. </td></tr>
     <tr><td class="paramname">inputLength</td><td>Length of the input line string. </td></tr>
     <tr><td class="paramname">fields</td><td>Pointer to return fields of the line string. </td></tr>
     <tr><td class="paramname">numOfFields</td><td>Pointer to return number of fields. </td></tr>

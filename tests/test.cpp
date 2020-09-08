@@ -3,84 +3,81 @@
 #include "../cparser/inc/cparser.h"
 
 /* Private function prototypes ---------------------------------------------*/
-static void versionCmdCallback(Dictionary_t *params);
-static void pumpCmdCallback(Dictionary_t *params);
-static void moveCmdCallback(Dictionary_t *params);
-static void delayCmdCallback(Dictionary_t *params);
+static void versionTrgCallback(Dictionary_t *params);
+static void pumpTrgCallback(Dictionary_t *params);
+static void moveTrgCallback(Dictionary_t *params);
+static void delayTrgCallback(Dictionary_t *params);
 
 /* Private variables -------------------------------------------------------*/
-Cp_Command_t CommandTable[] =
+Cp_Trigger_t TriggerTable[] =
     {
         {"delay",
          {
              {.letter = 'T', .type = CP_PARAM_TYPE_REAL},
          },
-         delayCmdCallback,
+         delayTrgCallback,
          1},
         {"versi",
          {
              {.letter = 'V', .type = CP_PARAM_TYPE_INTEGER},
          },
-         versionCmdCallback,
+         versionTrgCallback,
          1},
         {"move",
          {{.letter = 'D', .type = CP_PARAM_TYPE_REAL},
           {.letter = 'S', .type = CP_PARAM_TYPE_REAL}},
-         moveCmdCallback,
+         moveTrgCallback,
          2},
         {"pump",
          {
              {.letter = 'M', .type = CP_PARAM_TYPE_LETTER},
              {.letter = 'V', .type = CP_PARAM_TYPE_REAL},
          },
-         pumpCmdCallback,
+         pumpTrgCallback,
          2},
 };
 
-static Bool_t versionCmdTriggered;
-static int32_t versionCmdVersion;
-static Cp_ParamType_t versionCmdVersionType;
+static Bool_t versionTrgTriggered;
+static int32_t versionTrgVersion;
+static Cp_ParamType_t versionTrgVersionType;
 
-static Bool_t delayCmdTriggered;
-static float delayCmdTime;
-static Cp_ParamType_t delayCmdTimeType;
+static Bool_t delayTrgTriggered;
+static float delayTrgTime;
+static Cp_ParamType_t delayTrgTimeType;
 
-static Bool_t moveCmdTriggered;
-static float moveCmdDisplacement;
-static float moveCmdSpeed;
-static Cp_ParamType_t moveCmdDisplacementType;
-static Cp_ParamType_t moveCmdSpeedType;
+static Bool_t moveTrgTriggered;
+static float moveTrgDisplacement;
+static float moveTrgSpeed;
+static Cp_ParamType_t moveTrgDisplacementType;
+static Cp_ParamType_t moveTrgSpeedType;
 
-static Bool_t pumpCmdTriggered;
-static float pumpCmdVolume;
-static char pumpCmdMode;
-static Cp_ParamType_t pumpCmdVolumeType;
-static Cp_ParamType_t pumpCmdModeType;
+static Bool_t pumpTrgTriggered;
+static float pumpTrgVolume;
+static char pumpTrgMode;
+static Cp_ParamType_t pumpTrgVolumeType;
+static Cp_ParamType_t pumpTrgModeType;
 
 struct CparserTest : public ::testing::Test
 {
 public:
     virtual void SetUp() override
     {
-        versionCmdTriggered = FALSE;
-        versionCmdVersion = 0;
+        versionTrgTriggered = FALSE;
+        versionTrgVersion = 0;
 
-        delayCmdTriggered = FALSE;
-        delayCmdTime = 0.0f;
+        delayTrgTriggered = FALSE;
+        delayTrgTime = 0.0f;
 
-        moveCmdTriggered = FALSE;
-        moveCmdDisplacement = 0.0f;
-        moveCmdSpeed = 0.0f;
+        moveTrgTriggered = FALSE;
+        moveTrgDisplacement = 0.0f;
+        moveTrgSpeed = 0.0f;
 
-        pumpCmdTriggered = FALSE;
-        pumpCmdVolume = 0.0f;
-        pumpCmdMode = ' ';
+        pumpTrgTriggered = FALSE;
+        pumpTrgVolume = 0.0f;
+        pumpTrgMode = ' ';
 
         // Register command table.
-        for (uint8_t i = 0; i < (sizeof(CommandTable) / sizeof(CommandTable[0])); i++)
-        {
-            Cp_Register(&CommandTable[i]);
-        }
+        Cp_Register(TriggerTable, (sizeof(TriggerTable) / sizeof(TriggerTable[0])));
     }
 
     virtual void TearDown() override
@@ -95,9 +92,9 @@ TEST_F(CparserTest, DelayTest)
     char line[] = "delay T1E2";
     Cp_FeedLine(line, sizeof(line) - 1);
 
-    EXPECT_EQ(delayCmdTriggered, TRUE);
-    EXPECT_FLOAT_EQ(delayCmdTime, 100.0f);
-    EXPECT_EQ(delayCmdTimeType, CP_PARAM_TYPE_REAL);
+    EXPECT_EQ(delayTrgTriggered, TRUE);
+    EXPECT_FLOAT_EQ(delayTrgTime, 100.0f);
+    EXPECT_EQ(delayTrgTimeType, CP_PARAM_TYPE_REAL);
 }
 
 TEST_F(CparserTest, VersionTest)
@@ -106,9 +103,9 @@ TEST_F(CparserTest, VersionTest)
     char line[] = "versi V10";
     Cp_FeedLine(line, sizeof(line) - 1);
 
-    EXPECT_EQ(versionCmdTriggered, TRUE);
-    EXPECT_EQ(versionCmdVersion, 10);
-    EXPECT_EQ(versionCmdVersionType, CP_PARAM_TYPE_INTEGER);
+    EXPECT_EQ(versionTrgTriggered, TRUE);
+    EXPECT_EQ(versionTrgVersion, 10);
+    EXPECT_EQ(versionTrgVersionType, CP_PARAM_TYPE_INTEGER);
 }
 
 TEST_F(CparserTest, MoveTest)
@@ -117,11 +114,11 @@ TEST_F(CparserTest, MoveTest)
     char line[] = "move D1.0 S5.0";
     Cp_FeedLine(line, sizeof(line) - 1);
 
-    EXPECT_EQ(moveCmdTriggered, TRUE);
-    EXPECT_FLOAT_EQ(moveCmdDisplacement, 1.0f);
-    EXPECT_FLOAT_EQ(moveCmdSpeed, 5.0f);
-    EXPECT_EQ(moveCmdDisplacementType, CP_PARAM_TYPE_REAL);
-    EXPECT_EQ(moveCmdSpeedType, CP_PARAM_TYPE_REAL);
+    EXPECT_EQ(moveTrgTriggered, TRUE);
+    EXPECT_FLOAT_EQ(moveTrgDisplacement, 1.0f);
+    EXPECT_FLOAT_EQ(moveTrgSpeed, 5.0f);
+    EXPECT_EQ(moveTrgDisplacementType, CP_PARAM_TYPE_REAL);
+    EXPECT_EQ(moveTrgSpeedType, CP_PARAM_TYPE_REAL);
 }
 
 TEST_F(CparserTest, PumpTest)
@@ -130,41 +127,41 @@ TEST_F(CparserTest, PumpTest)
     char line[] = "pump V1.25 MD";
     Cp_FeedLine(line, sizeof(line) - 1);
 
-    EXPECT_EQ(pumpCmdTriggered, TRUE);
-    EXPECT_FLOAT_EQ(pumpCmdVolume, 1.25);
-    EXPECT_EQ('D', pumpCmdMode);
-    EXPECT_EQ(pumpCmdVolumeType, CP_PARAM_TYPE_REAL);
-    EXPECT_EQ(pumpCmdModeType, CP_PARAM_TYPE_LETTER);
+    EXPECT_EQ(pumpTrgTriggered, TRUE);
+    EXPECT_FLOAT_EQ(pumpTrgVolume, 1.25);
+    EXPECT_EQ('D', pumpTrgMode);
+    EXPECT_EQ(pumpTrgVolumeType, CP_PARAM_TYPE_REAL);
+    EXPECT_EQ(pumpTrgModeType, CP_PARAM_TYPE_LETTER);
 }
 
-void versionCmdCallback(Dictionary_t *params)
+void versionTrgCallback(Dictionary_t *params)
 {
-    versionCmdTriggered = TRUE;
-    versionCmdVersion = *((int32_t *)Dictionary_Get(params, 'V',
-                                                    &versionCmdVersionType));
+    versionTrgTriggered = TRUE;
+    versionTrgVersion = *((int32_t *)Dictionary_Get(params, 'V',
+                                                    &versionTrgVersionType));
 }
 
-void pumpCmdCallback(Dictionary_t *params)
+void pumpTrgCallback(Dictionary_t *params)
 {
-    pumpCmdTriggered = TRUE;
-    pumpCmdVolume = *((float *)Dictionary_Get(params, 'V',
-                                              &pumpCmdVolumeType));
-    pumpCmdMode = *((char *)Dictionary_Get(params, 'M',
-                                           &pumpCmdModeType));
+    pumpTrgTriggered = TRUE;
+    pumpTrgVolume = *((float *)Dictionary_Get(params, 'V',
+                                              &pumpTrgVolumeType));
+    pumpTrgMode = *((char *)Dictionary_Get(params, 'M',
+                                           &pumpTrgModeType));
 }
 
-void moveCmdCallback(Dictionary_t *params)
+void moveTrgCallback(Dictionary_t *params)
 {
-    moveCmdTriggered = TRUE;
-    moveCmdDisplacement = *((float *)Dictionary_Get(params, 'D',
-                                                    &moveCmdDisplacementType));
-    moveCmdSpeed = *((float *)Dictionary_Get(params, 'S',
-                                             &moveCmdSpeedType));
+    moveTrgTriggered = TRUE;
+    moveTrgDisplacement = *((float *)Dictionary_Get(params, 'D',
+                                                    &moveTrgDisplacementType));
+    moveTrgSpeed = *((float *)Dictionary_Get(params, 'S',
+                                             &moveTrgSpeedType));
 }
 
-void delayCmdCallback(Dictionary_t *params)
+void delayTrgCallback(Dictionary_t *params)
 {
-    delayCmdTriggered = TRUE;
-    delayCmdTime = *((float *)Dictionary_Get(params, 'T',
-                                             &delayCmdTimeType));
+    delayTrgTriggered = TRUE;
+    delayTrgTime = *((float *)Dictionary_Get(params, 'T',
+                                             &delayTrgTimeType));
 }

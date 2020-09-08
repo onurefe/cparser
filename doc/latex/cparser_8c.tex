@@ -1,0 +1,320 @@
+\hypertarget{cparser_8c}{}\doxysection{src/cparser.c File Reference}
+\label{cparser_8c}\index{src/cparser.c@{src/cparser.c}}
+{\ttfamily \#include \char`\"{}../inc/cparser.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}math.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Bool\+\_\+t \mbox{\hyperlink{cparser_8c_a1aa9ba400b942f4e49ab8ec44d896957}{does\+Match}} (const char $\ast$tname, char $\ast$input, uint8\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Compare if the input matches to the trigger name. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{cparser_8c_af5028778d4f73b313c3dd8940798ef9d}{parse\+Fields}} (char $\ast$input, uint8\+\_\+t input\+Length, Field\+\_\+t $\ast$fields, uint8\+\_\+t $\ast$num\+Of\+Fields)
+\begin{DoxyCompactList}\small\item\em Parse fields of the trigger string. \end{DoxyCompactList}\item 
+static Bool\+\_\+t \mbox{\hyperlink{cparser_8c_ab002a4cb26ce6ea66fa2571fad0d33e5}{parse\+Value}} (char $\ast$input, uint8\+\_\+t input\+Length, Cp\+\_\+\+Param\+Type\+\_\+t type, void $\ast$data, uint8\+\_\+t $\ast$size)
+\begin{DoxyCompactList}\small\item\em Parses the value of a given type. \end{DoxyCompactList}\item 
+static Bool\+\_\+t \mbox{\hyperlink{cparser_8c_a28904a5a23846ebcf315fbb94d2da78a}{parse\+Float}} (char $\ast$input, uint8\+\_\+t start\+\_\+idx, uint8\+\_\+t length, float $\ast$value)
+\begin{DoxyCompactList}\small\item\em Parses the floating point value. \end{DoxyCompactList}\item 
+static Bool\+\_\+t \mbox{\hyperlink{cparser_8c_a4b7a7967b829f9bd9dd241fe77481e1d}{parse\+Fractional}} (char $\ast$input, uint8\+\_\+t start\+\_\+idx, uint8\+\_\+t length, float $\ast$value)
+\begin{DoxyCompactList}\small\item\em Parses the fractional value. \end{DoxyCompactList}\item 
+static Bool\+\_\+t \mbox{\hyperlink{cparser_8c_ae781ca2c75020a9ac961cda5477bb17f}{parse\+Signed\+Integer}} (char $\ast$input, uint8\+\_\+t start\+\_\+idx, uint8\+\_\+t length, int32\+\_\+t $\ast$value)
+\begin{DoxyCompactList}\small\item\em Parses the signed integer value. \end{DoxyCompactList}\item 
+static Bool\+\_\+t \mbox{\hyperlink{cparser_8c_ad104c421c344b486fabbe5720bf5a70d}{parse\+Unsigned\+Integer}} (char $\ast$input, uint8\+\_\+t start\+\_\+idx, uint8\+\_\+t length, uint32\+\_\+t $\ast$value)
+\begin{DoxyCompactList}\small\item\em Parses the unsigned integer value. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{cparser_8c_aa6912e6489e4271c67bb1d181a38f194}{get\+Sign}} (char $\ast$input, uint8\+\_\+t start\+\_\+idx, uint8\+\_\+t length, int8\+\_\+t $\ast$sign, uint8\+\_\+t $\ast$stop\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Gets the sign of a given value in the given char array. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{cparser_8c_a6d825d6510c392fda2be171058da9ec0}{crop\+Jerk}} (char $\ast$input, uint8\+\_\+t start\+\_\+idx, uint8\+\_\+t length, uint8\+\_\+t $\ast$stop\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Crops the meaningless data out of the char array. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{cparser_8c_a72556af76a3b08dcdd2b9c3f2b67e359}{get\+Length}} (const char $\ast$input)
+\begin{DoxyCompactList}\small\item\em Gets the length of a null terminated string(length except null termination) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cparser_8c_a5c386b3b6f87b2d6248e9c3c93cf4d2c}\label{cparser_8c_a5c386b3b6f87b2d6248e9c3c93cf4d2c}} 
+void \mbox{\hyperlink{cparser_8c_a5c386b3b6f87b2d6248e9c3c93cf4d2c}{Cp\+\_\+\+Reset}} (void)
+\begin{DoxyCompactList}\small\item\em Clears the trigger parser registry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cparser_8c_af08a592ebcc3e4d85f46e4972bb9acd8}{Cp\+\_\+\+Register}} (\mbox{\hyperlink{structCp__Trigger__t}{Cp\+\_\+\+Trigger\+\_\+t}} $\ast$triggers, uint16\+\_\+t num\+Of\+Triggers)
+\begin{DoxyCompactList}\small\item\em Registers a trigger. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{cparser_8c_a41b2bf5b6c901271615729c333fd8634}{Cp\+\_\+\+Feed\+Line}} (char $\ast$input, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Feeds line of char array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cparser library core module. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cparser_8c_a41b2bf5b6c901271615729c333fd8634}\label{cparser_8c_a41b2bf5b6c901271615729c333fd8634}} 
+\index{cparser.c@{cparser.c}!Cp\_FeedLine@{Cp\_FeedLine}}
+\index{Cp\_FeedLine@{Cp\_FeedLine}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{Cp\_FeedLine()}{Cp\_FeedLine()}}
+{\footnotesize\ttfamily uint8\+\_\+t Cp\+\_\+\+Feed\+Line (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint16\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Feeds line of char array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Line char array. \\
+\hline
+{\em length} & Length of the char array.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{cparser_8c_af08a592ebcc3e4d85f46e4972bb9acd8}\label{cparser_8c_af08a592ebcc3e4d85f46e4972bb9acd8}} 
+\index{cparser.c@{cparser.c}!Cp\_Register@{Cp\_Register}}
+\index{Cp\_Register@{Cp\_Register}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{Cp\_Register()}{Cp\_Register()}}
+{\footnotesize\ttfamily void Cp\+\_\+\+Register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCp__Trigger__t}{Cp\+\_\+\+Trigger\+\_\+t}} $\ast$}]{triggers,  }\item[{uint16\+\_\+t}]{num\+Of\+Triggers }\end{DoxyParamCaption})}
+
+
+
+Registers a trigger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em triggers} & Pointer to the trigger array. \\
+\hline
+{\em num\+Of\+Triggers} & Number of triggers to be registered. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cparser_8c_a6d825d6510c392fda2be171058da9ec0}\label{cparser_8c_a6d825d6510c392fda2be171058da9ec0}} 
+\index{cparser.c@{cparser.c}!cropJerk@{cropJerk}}
+\index{cropJerk@{cropJerk}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{cropJerk()}{cropJerk()}}
+{\footnotesize\ttfamily void crop\+Jerk (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{start\+\_\+idx,  }\item[{uint8\+\_\+t}]{length,  }\item[{uint8\+\_\+t $\ast$}]{stop\+\_\+idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Crops the meaningless data out of the char array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Pointer to the input char array. \\
+\hline
+{\em start\+\_\+idx} & Start index of the process. \\
+\hline
+{\em length} & Window of the process. \\
+\hline
+{\em stop\+\_\+idx} & Pointer to the meaningfull data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cparser_8c_a1aa9ba400b942f4e49ab8ec44d896957}\label{cparser_8c_a1aa9ba400b942f4e49ab8ec44d896957}} 
+\index{cparser.c@{cparser.c}!doesMatch@{doesMatch}}
+\index{doesMatch@{doesMatch}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{doesMatch()}{doesMatch()}}
+{\footnotesize\ttfamily Bool\+\_\+t does\+Match (\begin{DoxyParamCaption}\item[{const char $\ast$}]{tname,  }\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Compare if the input matches to the trigger name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tname} & Null terminated trigger name string. \\
+\hline
+{\em input} & Input char array. \\
+\hline
+{\em length} & Length of the input.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{cparser_8c_a72556af76a3b08dcdd2b9c3f2b67e359}\label{cparser_8c_a72556af76a3b08dcdd2b9c3f2b67e359}} 
+\index{cparser.c@{cparser.c}!getLength@{getLength}}
+\index{getLength@{getLength}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+Length (\begin{DoxyParamCaption}\item[{const char $\ast$}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the length of a null terminated string(length except null termination) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Pointer to the string.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0x\+FF} & if not found. Length if found. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{cparser_8c_aa6912e6489e4271c67bb1d181a38f194}\label{cparser_8c_aa6912e6489e4271c67bb1d181a38f194}} 
+\index{cparser.c@{cparser.c}!getSign@{getSign}}
+\index{getSign@{getSign}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{getSign()}{getSign()}}
+{\footnotesize\ttfamily void get\+Sign (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{start\+\_\+idx,  }\item[{uint8\+\_\+t}]{length,  }\item[{int8\+\_\+t $\ast$}]{sign,  }\item[{uint8\+\_\+t $\ast$}]{stop\+\_\+idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the sign of a given value in the given char array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Char array to be processed. \\
+\hline
+{\em start\+\_\+idx} & Start index of the processing. \\
+\hline
+{\em length} & Window of the process. \\
+\hline
+{\em sign} & Pointer to return 1 or -\/1(positive or negative respectively). \\
+\hline
+{\em stop\+\_\+idx} & Pointer to return index next to the sign element index. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cparser_8c_af5028778d4f73b313c3dd8940798ef9d}\label{cparser_8c_af5028778d4f73b313c3dd8940798ef9d}} 
+\index{cparser.c@{cparser.c}!parseFields@{parseFields}}
+\index{parseFields@{parseFields}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{parseFields()}{parseFields()}}
+{\footnotesize\ttfamily void parse\+Fields (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{input\+Length,  }\item[{Field\+\_\+t $\ast$}]{fields,  }\item[{uint8\+\_\+t $\ast$}]{num\+Of\+Fields }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse fields of the trigger string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Trigger line string. \\
+\hline
+{\em input\+Length} & Length of the input line string. \\
+\hline
+{\em fields} & Pointer to return fields of the line string. \\
+\hline
+{\em num\+Of\+Fields} & Pointer to return number of fields. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cparser_8c_a28904a5a23846ebcf315fbb94d2da78a}\label{cparser_8c_a28904a5a23846ebcf315fbb94d2da78a}} 
+\index{cparser.c@{cparser.c}!parseFloat@{parseFloat}}
+\index{parseFloat@{parseFloat}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{parseFloat()}{parseFloat()}}
+{\footnotesize\ttfamily Bool\+\_\+t parse\+Float (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{start\+\_\+idx,  }\item[{uint8\+\_\+t}]{length,  }\item[{float $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses the floating point value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Input char array. \\
+\hline
+{\em start\+\_\+idx} & Start index of the number. \\
+\hline
+{\em length} & Length of the char array. \\
+\hline
+{\em value} & Pointer to the return value.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{cparser_8c_a4b7a7967b829f9bd9dd241fe77481e1d}\label{cparser_8c_a4b7a7967b829f9bd9dd241fe77481e1d}} 
+\index{cparser.c@{cparser.c}!parseFractional@{parseFractional}}
+\index{parseFractional@{parseFractional}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{parseFractional()}{parseFractional()}}
+{\footnotesize\ttfamily Bool\+\_\+t parse\+Fractional (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{start\+\_\+idx,  }\item[{uint8\+\_\+t}]{length,  }\item[{float $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses the fractional value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Input char array. \\
+\hline
+{\em start\+\_\+idx} & Start index of the number. \\
+\hline
+{\em length} & Length of the char array. \\
+\hline
+{\em value} & Pointer to the return value.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{cparser_8c_ae781ca2c75020a9ac961cda5477bb17f}\label{cparser_8c_ae781ca2c75020a9ac961cda5477bb17f}} 
+\index{cparser.c@{cparser.c}!parseSignedInteger@{parseSignedInteger}}
+\index{parseSignedInteger@{parseSignedInteger}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{parseSignedInteger()}{parseSignedInteger()}}
+{\footnotesize\ttfamily Bool\+\_\+t parse\+Signed\+Integer (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{start\+\_\+idx,  }\item[{uint8\+\_\+t}]{length,  }\item[{int32\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses the signed integer value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Input char array. \\
+\hline
+{\em start\+\_\+idx} & Start index of the number. \\
+\hline
+{\em length} & Length of the char array. \\
+\hline
+{\em value} & Pointer to the return value.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{cparser_8c_ad104c421c344b486fabbe5720bf5a70d}\label{cparser_8c_ad104c421c344b486fabbe5720bf5a70d}} 
+\index{cparser.c@{cparser.c}!parseUnsignedInteger@{parseUnsignedInteger}}
+\index{parseUnsignedInteger@{parseUnsignedInteger}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{parseUnsignedInteger()}{parseUnsignedInteger()}}
+{\footnotesize\ttfamily Bool\+\_\+t parse\+Unsigned\+Integer (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{start\+\_\+idx,  }\item[{uint8\+\_\+t}]{length,  }\item[{uint32\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses the unsigned integer value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Input char array. \\
+\hline
+{\em start\+\_\+idx} & Start index of the number. \\
+\hline
+{\em length} & Length of the char array. \\
+\hline
+{\em value} & Pointer to the return value.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{cparser_8c_ab002a4cb26ce6ea66fa2571fad0d33e5}\label{cparser_8c_ab002a4cb26ce6ea66fa2571fad0d33e5}} 
+\index{cparser.c@{cparser.c}!parseValue@{parseValue}}
+\index{parseValue@{parseValue}!cparser.c@{cparser.c}}
+\doxysubsubsection{\texorpdfstring{parseValue()}{parseValue()}}
+{\footnotesize\ttfamily Bool\+\_\+t parse\+Value (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{uint8\+\_\+t}]{input\+Length,  }\item[{Cp\+\_\+\+Param\+Type\+\_\+t}]{type,  }\item[{void $\ast$}]{data,  }\item[{uint8\+\_\+t $\ast$}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses the value of a given type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Input char array. \\
+\hline
+{\em input\+Length} & Length of the char array. \\
+\hline
+{\em type} & Type of the parameter. \\
+\hline
+{\em data} & Pointer to the return value. \\
+\hline
+{\em size} & Pointer to the return value memory size.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em T\+R\+UE} & or F\+A\+L\+SE. \\
+\hline
+\end{DoxyRetVals}

@@ -1,0 +1,169 @@
+.TH "cparser/inc/cparser.h" 3 "Wed Sep 9 2020" "Version 1" "Cparser" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cparser/inc/cparser.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'generic\&.h'\fP
+.br
+\fC#include 'cparser_config\&.h'\fP
+.br
+\fC#include 'dictionary\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCp_Param_t\fP"
+.br
+.ti -1c
+.RI "struct \fBCp_Trigger_t\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef void(* \fBCp_ParsedCallback_t\fP) (\fBDictionary_t\fP *dictionary)"
+.br
+.RI "Callback function prototype for the parsed trigger callbacks\&. "
+.ti -1c
+.RI "typedef uint8_t \fBCp_ParamType_t\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fB_Cp_ParamType_t\fP { \fBCP_PARAM_TYPE_LETTER\fP = 0, \fBCP_PARAM_TYPE_INTEGER\fP = 1, \fBCP_PARAM_TYPE_REAL\fP = 2 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCp_Reset\fP (void)"
+.br
+.RI "Clears the trigger parser registry\&. "
+.ti -1c
+.RI "void \fBCp_Register\fP (\fBCp_Trigger_t\fP *triggers, uint16_t numOfTriggers)"
+.br
+.RI "Registers a trigger\&. "
+.ti -1c
+.RI "uint8_t \fBCp_FeedLine\fP (char *input, uint16_t length)"
+.br
+.RI "Feeds line of char array\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface of the cparser library\&. 
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct Cp_Param_t"
+.PP 
+Parameter structure\&. Each parameter in a trigger structure is an instance of this struct\&. 
+.PP
+\fBData Fields:\fP
+.RS 4
+char \fIletter\fP Letter of the parameter 
+.br
+.PP
+\fBCp_ParamType_t\fP \fItype\fP Type of the parameter 
+.br
+.PP
+.RE
+.PP
+.SH "struct Cp_Trigger_t"
+.PP 
+Trigger structure\&. 
+.PP
+\fBData Fields:\fP
+.RS 4
+const \fBCp_ParsedCallback_t\fP \fIcallback\fP Parsed callback function pointer 
+.br
+.PP
+const char \fIname[\fBCPARSER_CONFIG_MAX_TRIGGER_NAME_LENGTH\fP+1]\fP Null terminated trigger name string 
+.br
+.PP
+const uint8_t \fInumOfParams\fP Number of parameters 
+.br
+.PP
+const \fBCp_Param_t\fP \fIparams[\fBCPARSER_CONFIG_MAX_NUM_OF_PARAMS\fP]\fP Array of parameters 
+.br
+.PP
+.RE
+.PP
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef uint8_t \fBCp_ParamType_t\fP"
+
+.SS "typedef void(* Cp_ParsedCallback_t) (\fBDictionary_t\fP *dictionary)"
+
+.PP
+Callback function prototype for the parsed trigger callbacks\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdictionary\fP Pointer to the dictionary of parameters\&. 
+.RE
+.PP
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fB_Cp_ParamType_t\fP"
+Parameter type enumeration\&. Determines type of the parameter to be parsed\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICP_PARAM_TYPE_LETTER \fP\fP
+Letter 
+.TP
+\fB\fICP_PARAM_TYPE_INTEGER \fP\fP
+Signed integer 
+.TP
+\fB\fICP_PARAM_TYPE_REAL \fP\fP
+Real number 
+.SH "Function Documentation"
+.PP 
+.SS "uint8_t Cp_FeedLine (char * input, uint16_t length)"
+
+.PP
+Feeds line of char array\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinput\fP Line char array\&. 
+.br
+\fIlength\fP Length of the char array\&.
+.RE
+.PP
+\fBReturn values\fP
+.RS 4
+\fITRUE\fP or FALSE\&. 
+.RE
+.PP
+
+.SS "void Cp_Register (\fBCp_Trigger_t\fP * triggers, uint16_t numOfTriggers)"
+
+.PP
+Registers a trigger\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItriggers\fP Pointer to the trigger array\&. 
+.br
+\fInumOfTriggers\fP Number of triggers to be registered\&. 
+.RE
+.PP
+
+.SS "void Cp_Reset (void)"
+
+.PP
+Clears the trigger parser registry\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Cparser from the source code\&.

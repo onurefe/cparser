@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_75',['name',['../structCp__Command__t.html#a71feeff96bd306a5a08e6ee34373d8db',1,'Cp_Command_t']]],
-  ['numberofelements_76',['numberOfElements',['../structDictionary__Dictionary__t.html#a3993772259ffe7193fe22f33c9e3face',1,'Dictionary_Dictionary_t']]],
-  ['numofparams_77',['numOfParams',['../structCp__Command__t.html#ad7ea564d6e2f60f4209410a3897d1313',1,'Cp_Command_t']]]
+  ['name_76',['name',['../structCp__Trigger__t.html#a36bd2082a46b95c3934ef03bb7f6bb33',1,'Cp_Trigger_t']]],
+  ['numberofelements_77',['numberOfElements',['../structDictionary__t.html#af5a15a62cf92a58aa62fd31d851a2a66',1,'Dictionary_t']]],
+  ['numofparams_78',['numOfParams',['../structCp__Trigger__t.html#a9ed911ca03b0b64aafd331d4a359bab8',1,'Cp_Trigger_t']]]
 ];

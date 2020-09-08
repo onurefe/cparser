@@ -79,44 +79,14 @@ $(function() {
 Macros</h2></td></tr>
 <tr class="memitem:a7f9a2d6177d25090d801115ba07af811"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser__config_8h.html#a7f9a2d6177d25090d801115ba07af811">CPARSER_CONFIG_MAX_NUM_OF_PARAMS</a>&#160;&#160;&#160;5</td></tr>
 <tr class="separator:a7f9a2d6177d25090d801115ba07af811"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06ed9e8b2574c61398f4e5ae659036bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser__config_8h.html#a06ed9e8b2574c61398f4e5ae659036bf">CPARSER_CONFIG_MAX_NUM_OF_COMMANDS</a>&#160;&#160;&#160;25</td></tr>
-<tr class="separator:a06ed9e8b2574c61398f4e5ae659036bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc71ce5c22de4ce8b1dc3cfeac8aafef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser__config_8h.html#adc71ce5c22de4ce8b1dc3cfeac8aafef">CPARSER_CONFIG_MAX_COMMAND_NAME_LENGTH</a>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:adc71ce5c22de4ce8b1dc3cfeac8aafef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8abadf108318bc28f92dbc914613396d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser__config_8h.html#a8abadf108318bc28f92dbc914613396d">CPARSER_CONFIG_MAX_NUM_OF_TRIGGERS</a>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:a8abadf108318bc28f92dbc914613396d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc89838bde5b2e53c45bc4f1375c3a92"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cparser__config_8h.html#adc89838bde5b2e53c45bc4f1375c3a92">CPARSER_CONFIG_MAX_TRIGGER_NAME_LENGTH</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:adc89838bde5b2e53c45bc4f1375c3a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration parameters. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="adc71ce5c22de4ce8b1dc3cfeac8aafef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc71ce5c22de4ce8b1dc3cfeac8aafef">&#9670;&nbsp;</a></span>CPARSER_CONFIG_MAX_COMMAND_NAME_LENGTH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CPARSER_CONFIG_MAX_COMMAND_NAME_LENGTH&#160;&#160;&#160;5</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Maximum command name length(except null terminator) </p>
-
-</div>
-</div>
-<a id="a06ed9e8b2574c61398f4e5ae659036bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06ed9e8b2574c61398f4e5ae659036bf">&#9670;&nbsp;</a></span>CPARSER_CONFIG_MAX_NUM_OF_COMMANDS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CPARSER_CONFIG_MAX_NUM_OF_COMMANDS&#160;&#160;&#160;25</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Maximum number of commands which can be registered. </p>
-
-</div>
-</div>
 <a id="a7f9a2d6177d25090d801115ba07af811"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f9a2d6177d25090d801115ba07af811">&#9670;&nbsp;</a></span>CPARSER_CONFIG_MAX_NUM_OF_PARAMS</h2>
 
@@ -128,7 +98,37 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Maximum number of parameters which a command can have. </p>
+<p>Maximum number of parameters which a trigger can have. </p>
+
+</div>
+</div>
+<a id="a8abadf108318bc28f92dbc914613396d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8abadf108318bc28f92dbc914613396d">&#9670;&nbsp;</a></span>CPARSER_CONFIG_MAX_NUM_OF_TRIGGERS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CPARSER_CONFIG_MAX_NUM_OF_TRIGGERS&#160;&#160;&#160;25</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Maximum number of triggers which can be registered. </p>
+
+</div>
+</div>
+<a id="adc89838bde5b2e53c45bc4f1375c3a92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc89838bde5b2e53c45bc4f1375c3a92">&#9670;&nbsp;</a></span>CPARSER_CONFIG_MAX_TRIGGER_NAME_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CPARSER_CONFIG_MAX_TRIGGER_NAME_LENGTH&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Maximum trigger name length(except null terminator) </p>
 
 </div>
 </div>
